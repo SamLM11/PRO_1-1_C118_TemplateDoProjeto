@@ -30,7 +30,7 @@ def predict():
 
 
 # Criando uma API para salvar a avaliação. O usuário clica no botão Salvar
-@app.route('/' , methods = [''])
+@app.route('/' , methods = ['POST'])
 def save():
 
     # extraindo data , nome do produto , avaliação e sentimento associado aos dados JSON
@@ -43,9 +43,9 @@ def save():
     data_entry = date + "," + product + "," + review + "," + sentiment
 
     # abra o arquivo no modo 'append'
-
+    with open('D:\Samuel\Estudos\VSCode\Aula118\static\assets\data_files\data_entry.csv', 'a')as f: 
     # Registre os dados no arquivo
-
+        f.write(data_entry)
     # retorne uma mensagem de sucesso
     return jsonify({'status' : 'success' , 
                     'message' : 'Dados Registrados'})
